@@ -28,10 +28,10 @@ instance.interceptors.response.use(
     },
 
     async (error) => {
-        if (error.response && error.response.status === 401  && error.response.data.message == 'Unauthenticated.') {
-            useAuthStore().logout()
+        if (error.response && error.status === 401  && error.response.data.error == 'Unauthorized') {
+            useAuthStore().unsetLoginDetails()
         } else if (error.status != 500) {
-            useAlertStore().error(error.response?.data.message)
+            useAlertStore().error(error.response?.data.error)
         }
         return Promise.reject(error);
     }

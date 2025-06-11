@@ -4,7 +4,6 @@ import { notify } from 'notiwind';
 export const useAlertStore = defineStore('alert', {
     actions: {
         success (message : string) {
-            console.log(message)
             notify({
                 group: 'foo',
                 title: 'Success',

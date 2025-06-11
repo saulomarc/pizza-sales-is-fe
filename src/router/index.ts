@@ -41,8 +41,6 @@ router.beforeEach(async (to, from) => {
     // ❗️ Avoid an infinite redirect
     to.name !== 'login'
   ) {
-    console.log(useAuthStore().authenticated)
-    console.log('going through here')
     // redirect the user to the login page
     return { name: 'login' }
   }

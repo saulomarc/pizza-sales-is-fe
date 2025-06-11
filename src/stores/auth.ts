@@ -56,6 +56,17 @@ export const useAuthStore = defineStore('auth', {
             }
         },
         async logout() {
+            try {
+                const { data } = await instance.post('auth/logout');
+                this.unsetLoginDetails()
+            } catch (error) {
+                if (!axios.isAxiosError(error)) {
+                    const errMessage = `Something went wrong while performing your request. Please contact administrator`;
+                    useAlertStore().error(errMessage)
+                }
+            }            
+        },
+        unsetLoginDetails() {
             this.token = null
             this.authenticated = false
             this.user = {}

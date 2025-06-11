@@ -17,14 +17,20 @@
     "@heroicons/vue": "^2.2.0",
     "@tailwindcss/vite": "^4.1.8",
     "@vee-validate/yup": "^4.15.1",
+    "@vuepic/vue-datepicker": "^11.0.2",
+    "@vuesimple/vs-pagination": "^3.0.9",
     "axios": "^1.9.0",
+    "dayjs": "^1.11.13",
     "notiwind": "^2.1.0",
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.3.0",
     "tailwindcss": "^4.1.8",
     "vee-validate": "^4.15.1",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-final-modal": "^4.5.5",
+    "vue-number-animation": "^2.0.2",
+    "vue-router": "^4.5.0",
+    "vue3-table-lite": "^1.4.3"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.1",

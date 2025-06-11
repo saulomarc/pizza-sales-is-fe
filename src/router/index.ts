@@ -9,7 +9,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { layout: 'DashboardLayout' },
+      meta: { layout: 'DashboardLayout', title: 'Pizza IS - Home' },
     },
     {
       path: '/about',
@@ -18,16 +18,16 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
-      meta: { layout: 'DashboardLayout' },
+      meta: { layout: 'DashboardLayout', title: 'About' },
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue'),
-      meta: { layout: 'PlainLayout' },
+      meta: { layout: 'PlainLayout', title: 'Pizza IS - Login' },
       beforeEnter: (to, from) => {
         if (useAuthStore().authenticated) {
-          return false
+          return { name: 'home' }
         }
       },
     }
@@ -35,12 +35,10 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from) => {
-  if (
-    // make sure the user is authenticated
-    !useAuthStore().authenticated &&
-    // ❗️ Avoid an infinite redirect
-    to.name !== 'login'
-  ) {
+  document.title = to.meta.title || 'Default Title';
+
+  // make sure the user is authenticated and avoid an infinite redirect
+  if (!useAuthStore().authenticated && to.name !== 'login') {
     // redirect the user to the login page
     return { name: 'login' }
   }

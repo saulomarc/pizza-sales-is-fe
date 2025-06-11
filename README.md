@@ -1,39 +1,38 @@
-# pizza-sales-is-fe
+# Pizza Sales IS 
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a Vue 3 application powered by [Vite](https://vitejs.dev/), a fast and modern frontend build tool.
 
-## Recommended IDE Setup
+## 📦 Prerequisites
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Before you start, ensure you have the following installed:
 
-## Type Support for `.vue` Imports in TS
+- [Node.js](https://nodejs.org/) (version 16.0 or above recommended)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+You can check your versions by running:
 
-## Customize configuration
+```bash
+node -v
+npm -v
+```
+### 1. Clone the Repository
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+```bash
+git clone https://github.com/saulomarc/pizza-sales-is-fe.git
+cd pizza-sales-is-fe
+```
 
-## Project Setup
-
-```sh
+### 2. Install Dependencies
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 3. Copy .env File
+```bash
+cp .env.example .env
+```
 
-```sh
+### 4. Run Development Server
+```bash
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```

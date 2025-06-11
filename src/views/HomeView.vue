@@ -7,6 +7,7 @@ import IngredientTable from '@/components/Tables/IngredientTable.vue';
 import NumberCard from '@/components/NumberCard.vue';
 import { PresentationChartLineIcon } from '@heroicons/vue/20/solid';
 import { useDashboardStore } from '@/stores/dashboard';
+import CircSpinner from '@/components/CircSpinner.vue';
 
 const store = useDashboardStore()
 
@@ -29,7 +30,7 @@ const cardStats = computed(() => store.cards)
           <PresentationChartLineIcon class="size-5" />
         </template>
       </NumberCard>
-      <NumberCard :cardText="'Best Selling Pizza'" :textValue="cardStats.most_ordered.name">
+      <NumberCard :cardText="'Best Selling Pizza'" :textValue="cardStats.most_ordered?.name">
         <template #icon>
           <PresentationChartLineIcon class="size-5" />
         </template>
@@ -39,6 +40,30 @@ const cardStats = computed(() => store.cards)
           <PresentationChartLineIcon class="size-5" />
         </template>
       </NumberCard>
+    </div>
+    <div class="grid grid-cols-2 gap-4 rounded-xl mt-4">
+      <div>
+        <div class="font-bold">
+          Top Five Best Selling Pizza
+        </div>
+        <table v-if="cardStats.top_five_most_ordered?.length > 0" class="table-auto w-full items-center border border-gray-100 border-collapse shadow-md drop-shadow-md">
+          <thead>
+            <tr>
+              <th class="px-2 py-1 font-bold text-sm border-gray-300">Pizza</th>
+              <th class="px-2 py-1 font-bold text-sm border-gray-300">No. of Orders</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(mo, moIndex) in cardStats.top_five_most_ordered" :key="moIndex" class="bg-white border-n text-sm">
+              <td class="px-2 py-2 text-sm font-medium text-gray-900">{{ mo.name }}</td>
+              <td class="px-2 py-2 text-sm text-gray-500">{{ mo.total_orders }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div v-else class="flex justify-center">
+          <CircSpinner :is-loading="true" />
+        </div>
+      </div>
     </div>
     <div class="mt-4">
       <div>

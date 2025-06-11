@@ -62,8 +62,15 @@ function handleShowPassword() {
                     <Field v-model="credentials.password" v-slot="{ field }" name="password">
                         <input v-bind="field" :type="inputType" name="password" id="password" autocomplete="current-password" class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" />
                     </Field>                        
-                    <div class="text-xs flex items-center mt-1">
-                        <input type="checkbox" @click="handleShowPassword" class="mr-1 mt-0.5"> Show Password
+                    <div class="text-xs flex items-center mt-1 justify-between">
+                        <div>
+                            <ErrorMessage v-slot="{ message }" as="div" name="password">
+                                <p class="text-xs text-red-600">{{ message }}</p>
+                            </ErrorMessage>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" @click="handleShowPassword" class="mr-1 mt-0.5"> Show Password
+                        </div>
                     </div>
                 </div>
                 

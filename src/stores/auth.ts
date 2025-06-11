@@ -11,7 +11,7 @@ export const useAuthStore = defineStore('auth', {
         return {
             token: null as string | null,
             authenticated: false,
-            user: {},
+            user: {} as User,
             roles: [],
             permissions: []
         }
@@ -26,6 +26,8 @@ export const useAuthStore = defineStore('auth', {
                 if (!axios.isAxiosError(error)) {
                     const errMessage = `Something went wrong while performing your request. Please contact administrator`;
                     useAlertStore().error(errMessage)
+                } else {
+                    useAlertStore().error('Unauthorized')
                 }
             }
         },
@@ -69,7 +71,7 @@ export const useAuthStore = defineStore('auth', {
         unsetLoginDetails() {
             this.token = null
             this.authenticated = false
-            this.user = {}
+            this.user = {} as User
 
             router.push({ name: 'login' })
         },
@@ -79,6 +81,8 @@ export const useAuthStore = defineStore('auth', {
         },
         setUserDetails(userDetails: User) {
             this.user = userDetails
+
+            useAlertStore().success('Welcome back, ' + this.user.name + '!')
         },
         async logoutUser() {
             await instance.post('auth/logout')

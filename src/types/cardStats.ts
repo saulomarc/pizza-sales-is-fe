@@ -1,10 +1,8 @@
+import type { MostOrdered } from "./mostOrdered";
+
 export interface CardStat {
-    most_ordered: {
-        id?: number,
-        name: string,
-        pizza_id?: number,
-        total_orders: string
-    },
+    top_five_most_ordered: MostOrdered[],
+    most_ordered: MostOrdered,
     total_orders: number,
     total_pizzas_ordered: number,
 }
